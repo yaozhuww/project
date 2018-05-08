@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+  <title>Document</title>
+  <style>
+    .red {
+      color:red;
+    }
+    .font {
+      font-size:30px;
+    }
+  </style>
+</head>
+<body ng-app='my-app'>
+  <div ng-controller="ctr1">
+    <input type="text" ng-model="name">
+    <button ng-click='change($event)'>点击</button>
+    <div ng-bind='name2'>
+    </div>
+    <div ng-class='{red:true,font:false}' ng-if='false'>颜色</div>
+    <p highlight="ww">ww</p>
+    <ul>
+      <li ng-repeat='item in arr1'>{{item.name}}</li>
+    </ul>
+    <p ng-bind='age1 | age'></p>
+  </div>
+  <script>
+    var app = angular.module('my-app',[]);
+    app.controller('ctr1',function($scope){
+      $scope.name = '';
+      $scope.name2 = 'ww';
+      $scope.name3 = '';
+      $scope.age1 = 'wwwwwww'
+      $scope.change = function($event){
+        $scope.name2 = $scope.name
+        console.log(1111)
+        $scope.name = ''
+        console.log($event)
+      }
+      $scope.arr1 = [
+        {
+          name:'ww',
+          age:20
+        },
+        {
+          name:'wwwgg',
+          age:30
+        },
+        {
+          name:39,
+          age:45
+        }
+      ]
+      $scope.arr = [2,3,4,5,6,7,9]
+      
+    })
+    app.directive('highlight',function(){
+      return function(scope,ele,attr){
+        console.log(scope.name2)
+        ele.css({fontSize:40+'px'})
+        console.log(attr)
+      }
+    })
+    app.filter('age',function(){
+      return function(oldValue){
+        console.log(oldValue)
+        var name = oldValue.slice(0,2)
+        console.log(name)
+        return name
+      }
+    })
+  </script>
+</body>
+</html>
