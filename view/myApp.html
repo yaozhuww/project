@@ -1,0 +1,13 @@
+<div>
+    <h2 ng-bind='name'></h2>
+    <h2 ng-bind='age'></h2>
+    <button ng-click='getName()'>点击</button>
+    <hr>
+    <ul>
+        <li ui-sref='.main'>主体</li>
+        <li ui-sref='.article'>文章</li>
+    </ul>
+    <div>
+        <ui-view></ui-view>
+    </div>
+</div>
