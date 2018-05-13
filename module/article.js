@@ -1,6 +1,7 @@
-app.controller('article',['$scope','$rootScope','$state',function($scope,$rootScope,$state){
+app.controller('article',['$scope','$rootScope','$state','consoleServer',function($scope,$rootScope,$state,consoleServer){
     $scope.go = function(){
-        alert($rootScope.title)
+        // alert($rootScope.title)
         // $state.go('con')
+        consoleServer.console('这是一个服务')
     }
 }])
